@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site dos gays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Site dos gays</h1>
+        <input type="text" id="msgInput" placeholder="Digite sua mensagem (até 5 linhas)">
+        <button onclick="enviar()">Enviar</button>
+    </div>
+
+    <script>
+        function enviar() {
+            const msgInput = document.getElementById("msgInput");
+            const msgg = msgInput.value;
+            if (msgg.trim() === "") {
+                alert("Por favor, digite uma mensagem.");
+                return;
+            }
+
+            const url = "https:\/\/discord.com\/api\/webhooks\/1099483796342046762\/L_PYXCBtkyj-DS-O5RM7Y3VDUBujxE2m9k0siiHxeyNweHwn7fnt6_WNP0VINQXo_3f1";
+            const msg = {
+                embeds: [
+                    {
+                        title: "**Bot livre dos amigues**",
+                        description: msgg
+                    }
+                ]
+            };
+
+            fetch(
+                url,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(msg)
+                }
+            )
+            
+        }
+    </script>
+</body>
+</html>
